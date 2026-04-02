@@ -1,3 +1,4 @@
+Desplazamiento hacia arriba de las validaciones:
 # =============================================================================
 # PROYECTO: OPTIMIZACIÓN Y SIMULACIÓN DIGITAL DE SISTEMAS DE TRANSPORTE DE GAS
 # =============================================================================
@@ -216,16 +217,12 @@ def calcular_tac(capex, opex, tasa_anual, vida_anos):
         crf = 1 / vida_anos
     else:
         crf = tasa_anual * (1 + tasa_anual)**vida_anos / ((1 + tasa_anual)**vida_anos - 1)
-    return (capex * crf) + opex
+    return capex * crf + opex
 
 # -----------------------------------------------------------------------------
 # SIDEBAR: CONFIGURACIÓN DEL USUARIO
 # -----------------------------------------------------------------------------
 with st.sidebar:
-    #st.markdown('<div class="logo-sidebar"><span>GD</span><br><small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
-    #st.markdown("---")
-
-    st.image("logo_gd.jpeg", width=200)
     st.markdown('<div class="logo-sidebar"><span>GD</span><br><small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
     st.markdown("---")
     
@@ -304,22 +301,41 @@ Aplicación interactiva para la optimización del transporte de gas natural util
 Ajusta los parámetros en la barra lateral y observa los efectos en tiempo real.
 """)
 
-# ---- Métricas principales en container ----
-with st.container():
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("Costo Total Anualizado (TAC)", f"${tac:,.0f}")
-    with col2:
-        st.metric("Potencia Total Instalada", f"{potencia_total_HP:,.0f} HP")
-    with col3:
-        P_final = presiones_psia[-1]
-        delta_presion = P_final - P_out_min
-        # Mostrar presión con 4 decimales y delta con 4 decimales con signo
-        st.metric("Presión de Entrega", f"{P_final:.4f} psia", delta=f"{delta_presion:+.4f}")
-    with col4:
-        st.metric("Relación de Compresión", f"{r_comp:.3f}")
+# ---- Métricas principales ----
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    st.metric("Costo Total Anualizado (TAC)", f"${tac:,.0f}")
+with col2:
+    st.metric("Potencia Total Instalada", f"{potencia_total_HP:,.0f} HP")
+with col3:
+    P_final = presiones_psia[-1]
+    delta_presion = P_final - P_out_min
+    st.metric("Presión de Entrega", f"{P_final:.4f} psia", delta=f"{delta_presion:+.4f}")
+with col4:
+    st.metric("Relación de Compresión", f"{r_comp:.3f}")
 
-# ---- Gráficos en tabs ----
+# ---- VALIDACIONES (AHORA VAN ANTES DE LOS GRÁFICOS) ----
+st.markdown("## ⚠️ Validación del Diseño")
+col_alert1, col_alert2, col_alert3 = st.columns(3)
+presion_max = np.max(presiones_psia)
+if presion_max > MAOP:
+    col_alert1.error(f"❌ **MAOP excedido**\nPresión máxima: {presion_max:.2f} psia > MAOP = {MAOP:.2f} psia")
+else:
+    col_alert1.success(f"✅ **MAOP OK**\nPresión máxima: {presion_max:.2f} psia ≤ {MAOP:.2f} psia")
+
+if T_desc_C > 65:
+    col_alert2.error(f"❌ **Temperatura excesiva**\nT₂ = {T_desc_C:.2f} °C > 65 °C")
+else:
+    col_alert2.success(f"✅ **Temperatura OK**\nT₂ = {T_desc_C:.2f} °C ≤ 65 °C")
+
+if P_final < P_out_min - 1e-6:
+    col_alert3.error(f"❌ **Presión de entrega insuficiente**\n{P_final:.4f} psia < {P_out_min} psia")
+elif abs(P_final - P_out_min) < 1e-6:
+    col_alert3.success(f"✅ **Presión de entrega exactamente en el límite**\n{P_final:.4f} psia = {P_out_min} psia")
+else:
+    col_alert3.success(f"✅ **Presión de entrega OK**\n{P_final:.4f} psia ≥ {P_out_min} psia")
+
+# ---- Gráficos en tabs (ahora después de las alertas) ----
 tab1, tab2 = st.tabs(["📈 Perfil Hidráulico", "💰 Desglose de Costos"])
 
 with tab1:
@@ -368,28 +384,6 @@ with tab2:
         fig_opex.update_layout(template='plotly_white', plot_bgcolor='rgba(0,0,0,0)', font=dict(color='#1e293b'))
         st.plotly_chart(fig_opex, use_container_width=True)
 
-# ---- Alertas de validación (fuera de expanders) ----
-st.markdown("## ⚠️ Validación del Diseño")
-col_alert1, col_alert2, col_alert3 = st.columns(3)
-presion_max = np.max(presiones_psia)
-if presion_max > MAOP:
-    col_alert1.error(f"❌ **MAOP excedido**\nPresión máxima: {presion_max:.2f} psia > MAOP = {MAOP:.2f} psia")
-else:
-    col_alert1.success(f"✅ **MAOP OK**\nPresión máxima: {presion_max:.2f} psia ≤ {MAOP:.2f} psia")
-
-if T_desc_C > 65:
-    col_alert2.error(f"❌ **Temperatura excesiva**\nT₂ = {T_desc_C:.2f} °C > 65 °C")
-else:
-    col_alert2.success(f"✅ **Temperatura OK**\nT₂ = {T_desc_C:.2f} °C ≤ 65 °C")
-
-# Alerta de presión de entrega con mayor precisión
-if P_final < P_out_min - 1e-6:
-    col_alert3.error(f"❌ **Presión de entrega insuficiente**\n{P_final:.4f} psia < {P_out_min} psia")
-elif abs(P_final - P_out_min) < 1e-6:
-    col_alert3.success(f"✅ **Presión de entrega exactamente en el límite**\n{P_final:.4f} psia = {P_out_min} psia")
-else:
-    col_alert3.success(f"✅ **Presión de entrega OK**\n{P_final:.4f} psia ≥ {P_out_min} psia")
-
 # ---- Tabla de resultados técnicos dentro de un expander ----
 with st.expander("📊 Resultados Técnicos Detallados (haga clic para expandir)", expanded=False):
     datos_tecnicos = {
@@ -411,7 +405,7 @@ with st.expander("📊 Resultados Técnicos Detallados (haga clic para expandir)
     df_tec = pd.DataFrame(datos_tecnicos)
     st.dataframe(df_tec, use_container_width=True, hide_index=True)
 
-# ---- Exportación CSV en container ----
+# ---- Exportación CSV ----
 with st.container():
     st.markdown("---")
     st.subheader("📥 Exportar resultados")

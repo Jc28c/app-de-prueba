@@ -1,4 +1,3 @@
-Desplazamiento hacia arriba de las validaciones:
 # =============================================================================
 # PROYECTO: OPTIMIZACIÓN Y SIMULACIÓN DIGITAL DE SISTEMAS DE TRANSPORTE DE GAS
 # =============================================================================

@@ -313,7 +313,7 @@ with col3:
 with col4:
     st.metric("Relación de Compresión", f"{r_comp:.3f}")
 
-# ---- VALIDACIONES (AHORA VAN ANTES DE LOS GRÁFICOS) ----
+# ---- VALIDACIONES (antes de los gráficos) ----
 st.markdown("## ⚠️ Validación del Diseño")
 col_alert1, col_alert2, col_alert3 = st.columns(3)
 presion_max = np.max(presiones_psia)
@@ -334,11 +334,9 @@ elif abs(P_final - P_out_min) < 1e-6:
 else:
     col_alert3.success(f"✅ **Presión de entrega OK**\n{P_final:.4f} psia ≥ {P_out_min} psia")
 
-# ---- Gráficos en tabs (ahora después de las alertas) ----
-tab1, tab2 = st.tabs(["📈 Perfil Hidráulico", "💰 Desglose de Costos"])
-
-with tab1:
-    st.markdown("### Perfil de Presión a lo largo del Gasoducto")
+# ---- Perfil Hidráulico (expander) ----
+with st.expander("📈 Perfil Hidráulico (haga clic para expandir)", expanded=False):
+    st.markdown("### Evolución de la presión con estaciones de compresión")
     fig_pres = go.Figure()
     fig_pres.add_trace(go.Scatter(
         x=distancias_km, y=presiones_psia,
@@ -351,7 +349,7 @@ with tab1:
     fig_pres.add_hline(y=P_out_min, line_dash="dash", line_color="red", annotation_text="Presión mínima de entrega")
     fig_pres.add_hline(y=MAOP, line_dash="dash", line_color="orange", annotation_text=f"MAOP = {MAOP:.0f} psia")
     fig_pres.update_layout(
-        title="Evolución de la presión con estaciones de compresión",
+        title="",
         xaxis_title="Distancia (km)",
         yaxis_title="Presión (psia)",
         template="plotly_white",
@@ -362,8 +360,9 @@ with tab1:
     )
     st.plotly_chart(fig_pres, use_container_width=True)
 
-with tab2:
-    st.markdown("### Desglose de Costos")
+# ---- Desglose de Costos (expander) ----
+with st.expander("💰 Desglose de Costos (haga clic para expandir)", expanded=False):
+    st.markdown("### Inversión de Capital (CAPEX) y Costos Operativos (OPEX)")
     capex_componentes = {'Tubería': capex_tuberia, 'Compresores': capex_compresores}
     opex_componentes = {'Energía': opex_energia}
     df_capex = pd.DataFrame(list(capex_componentes.items()), columns=['Concepto', 'CAPEX (USD)'])

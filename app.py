@@ -269,6 +269,10 @@ with st.sidebar:
     st.title("⚙️ Configuración del Gasoducto")
     st.markdown("---")
 
+    st.image("logo_gd.jpeg", width=100)
+    st.markdown('<div class="logo_gd-sidebar"><span>GD</span><br<small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
+    st.markdown("---")
+
     st.subheader("📊 Parámetros Económicos")
     costo_energia = st.number_input("Costo de energía (USD/kWh)", min_value=0.01, max_value=1.0, value=0.08, step=0.01, format="%.3f")
     factor_costo_acero = st.slider("Factor costo acero", min_value=0.5, max_value=2.0, value=1.0, step=0.05, help="Multiplicador del costo base del tubo")

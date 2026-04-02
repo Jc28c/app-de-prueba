@@ -225,7 +225,7 @@ with st.sidebar:
     #st.markdown('<div class="logo-sidebar"><span>GD</span><br><small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
     #st.markdown("---")
 
-    st.image("logo_gd.jpeg", width=100)
+    st.image("logo_gd.jpeg", width=200)
     st.markdown('<div class="logo-sidebar"><span>GD</span><br><small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
     st.markdown("---")
     

@@ -226,7 +226,7 @@ with st.sidebar:
     st.markdown("---")
 
     st.image("logo_gd.jpeg", width=100)
-    st.markdown('<div class="logo_gd-sidebar"><span>GD</span><br<small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
+    st.markdown('<div class="logo_gd-sidebar"><span>GD</span><br><small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
     st.markdown("---")
     
     st.subheader("📊 Parámetros Económicos")

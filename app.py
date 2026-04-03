@@ -419,7 +419,7 @@ with st.expander("💰 Desglose de Costos (haga clic para expandir)", expanded=F
         st.plotly_chart(fig_capex, use_container_width=True)
     with col_bar2:
         fig_opex = px.bar(df_opex, x='Concepto', y='OPEX anual (USD)', color='Concepto',
-                          color_discrete_sequence=['#2c7a6e'],
+                          color_discrete_sequence=['#34d399'],
                           title='Costos Operativos Anuales (OPEX)')
         fig_opex.update_layout(template='plotly_white', plot_bgcolor='rgba(0,0,0,0)', font=dict(color='#1e293b'))
         st.plotly_chart(fig_opex, use_container_width=True)

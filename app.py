@@ -344,10 +344,16 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 st.title("Simulador del Gasoducto Trans‑Andino")
 st.markdown("""
-Aplicación interactiva para la optimización del transporte de gas natural utilizando el método de Weymouth.
-Ajusta los parámetros en la barra lateral y observa los efectos en tiempo real.
-""")
+​Simulador del Gasoducto Trans-Andino
 
+​Esta plataforma permite evaluar el comportamiento técnico del Gasoducto Trans-Andino en tiempo real. El sistema integra el Método de Weymouth para modelar la caída de presión y determinar la viabilidad operativa del transporte de gas natural bajo distintas configuraciones de diseño.
+
+​Al interactuar con el panel, el usuario accede a una visión integral del Perfil Hidráulico (Presión vs. Distancia) y a un análisis económico detallado. El simulador calcula automáticamente la inversión de capital (CAPEX) en tuberías y compresores, junto con los costos operativos (OPEX) derivados del consumo energético, consolidándolos en el Costo Total Anualizado (TAC) para identificar la configuración más rentable
+
+​Instrucciones de Uso: Utilice la barra lateral para configurar los parámetros económicos (Costo de energía, factor del acero y tasas de interés) y la selección del material (Diámetro nominal y grado de acero). Ajuste las variables operativas como el flujo de gas y el número de estaciones de compresión para observar la actualización instantánea de las métricas y gráficas de rendimiento.
+""")
+#Aplicación interactiva para la optimización del transporte de gas natural utilizando el método de Weymouth.
+Ajusta los parámetros en la barra lateral y observa los efectos en tiempo real.
 # ---- Métricas principales ----
 col1, col2, col3, col4 = st.columns(4)
 with col1:

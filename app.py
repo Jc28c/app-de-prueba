@@ -24,7 +24,7 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# ESTILO PERSONALIZADO (fondo claro, sidebar azul oscuro con texto blanco)
+# ESTILO PERSONALIZADO (fondo claro, sidebar azul Spiderman, texto blanco)
 # -----------------------------------------------------------------------------
 st.markdown("""
 <style>
@@ -34,9 +34,9 @@ st.markdown("""
     html, body, [class*="css"] {
         color: #1e293b;
     }
-    /* Sidebar azul oscuro */
+    /* Sidebar azul Spiderman (tono #1e3a8a) */
     section[data-testid="stSidebar"] {
-        background: #0f172a;
+        background: #1e3a8a;
         border-right: 1px solid #1e293b;
     }
     /* Todos los textos del sidebar en blanco */
@@ -63,16 +63,16 @@ st.markdown("""
         background: none !important;
         -webkit-text-fill-color: initial !important;
     }
-    /* Inputs del sidebar: fondo oscuro, texto blanco */
+    /* Inputs del sidebar: fondo azul más claro, texto blanco */
     section[data-testid="stSidebar"] .stNumberInput input,
     section[data-testid="stSidebar"] .stSelectbox select,
     section[data-testid="stSidebar"] .stSlider .stSliderTickBar {
-        background-color: #1e293b;
+        background-color: #2563eb;
         color: #ffffff;
     }
     /* Logo en sidebar (texto "GD" y "El Gemelo Digital") */
     .logo-sidebar span {
-        background: linear-gradient(135deg, #ffffff, #94a3b8);
+        background: linear-gradient(135deg, #ffffff, #cbd5e1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }

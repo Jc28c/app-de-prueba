@@ -24,7 +24,7 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# ESTILO PERSONALIZADO (fondo claro, sidebar azul, texto blanco, flecha blanca)
+# ESTILO PERSONALIZADO (fondo claro, sidebar azul claro, texto blanco, flecha blanca)
 # -----------------------------------------------------------------------------
 st.markdown("""
 <style>
@@ -34,9 +34,9 @@ st.markdown("""
     html, body, [class*="css"] {
         color: #1e293b;
     }
-    /* Sidebar azul Spiderman */
+    /* Sidebar azul más claro */
     section[data-testid="stSidebar"] {
-        background: #1e3a8a;
+        background: #2c5a9e;
         border-right: 1px solid #1e293b;
     }
     /* Flecha para contraer/expandir sidebar en blanco */
@@ -72,7 +72,7 @@ st.markdown("""
     section[data-testid="stSidebar"] .stNumberInput input,
     section[data-testid="stSidebar"] .stSelectbox select,
     section[data-testid="stSidebar"] .stSlider .stSliderTickBar {
-        background-color: #2563eb;
+        background-color: #3b6cb7;
         color: #ffffff;
     }
     /* Títulos principales sin gradiente morado */
@@ -248,7 +248,7 @@ def calcular_tac(capex, opex, tasa_anual, vida_anos):
 # SIDEBAR: CONFIGURACIÓN DEL USUARIO
 # -----------------------------------------------------------------------------
 with st.sidebar:
-    # Logo centrado (cambia "logo.png" por el nombre de tu archivo)
+    # Logo centrado (cambia "logo.jpeg" por el nombre de tu archivo)
     st.markdown('<div class="centered-image">', unsafe_allow_html=True)
     st.image("logo.jpeg", width=150)  # Ajusta el ancho según tu logo
     st.markdown('</div>', unsafe_allow_html=True)
@@ -327,7 +327,7 @@ tac = calcular_tac(capex_total, opex_energia, tasa_interes, vida_util)
 st.image("banner.jpeg", use_container_width=True)
 st.markdown("<br>", unsafe_allow_html=True)  # pequeño espacio después del banner
 
-st.title("Simulador del Gasoducto Trans‑Andino")
+st.title("🛢️ Simulador del Gasoducto Trans‑Andino")
 st.markdown("""
 Aplicación interactiva para la optimización del transporte de gas natural utilizando el método de Weymouth.
 Ajusta los parámetros en la barra lateral y observa los efectos en tiempo real.

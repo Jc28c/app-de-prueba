@@ -252,13 +252,13 @@ with st.sidebar:
     st.markdown('<div class="logo-sidebar"><span>GD</span><br><small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
     st.markdown("---")
     
-    st.subheader("📊 Parámetros Económicos")
+    st.subheader("Parámetros Económicos")
     costo_energia = st.number_input("Costo de energía (USD/kWh)", min_value=0.01, max_value=1.0, value=0.08, step=0.01, format="%.3f")
     factor_costo_acero = st.slider("Factor costo acero", min_value=0.5, max_value=2.0, value=1.0, step=0.05)
     tasa_interes = st.number_input("Tasa de interés anual (%)", min_value=0.0, max_value=30.0, value=8.0, step=0.5, format="%.1f") / 100.0
 
     st.markdown("---")
-    st.subheader("🔧 Selección de Material")
+    st.subheader("Selección de Material")
     dn_opcion = st.selectbox("Diámetro nominal (pulg)", options=TUBERIAS['DN_pulg'].tolist(), index=2, format_func=lambda x: f"{x}\"")
     grado_opcion = st.selectbox("Grado de acero", options=GRADOS['grado'].tolist(), index=0)
 
@@ -273,12 +273,12 @@ with st.sidebar:
     F = grado_sel['F']
 
     st.markdown("---")
-    st.subheader("🔄 Variables Operativas")
+    st.subheader("Variables Operativas")
     Q_oper = st.number_input("Flujo de gas (MMscfd)", min_value=100.0, max_value=1500.0, value=Q_base, step=10.0)
     N_estaciones = st.slider("Número de estaciones de compresión", min_value=1, max_value=10, value=2, step=1)
 
     st.markdown("---")
-    st.markdown("### 📋 Resumen del diseño")
+    st.markdown("### Resumen del diseño")
     col_met1, col_met2 = st.columns(2)
     with col_met1:
         st.metric("Longitud", f"{L_km} km")

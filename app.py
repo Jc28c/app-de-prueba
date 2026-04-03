@@ -483,4 +483,8 @@ with st.container():
 
 st.markdown("---")
 st.markdown("""
-<div style="text-align: center; padding: 15px; color: #4b5563;
+<div style="text-align: center; padding: 15px; color: #4b5563; font-size: 0.85rem;">
+    <strong>Universidad Central de Venezuela - Escuela de Ingeniería Química</strong><br>
+    Optimización de Procesos • Prof. Ricardo Olejnik • 2026
+</div>
+""", unsafe_allow_html=True)

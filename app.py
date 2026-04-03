@@ -343,7 +343,7 @@ st.markdown("""
     </p>
     <p style="margin-bottom: 0;">
         <strong>Instrucciones de Uso:</strong><br>
-        Utilice la barra lateral para configurar los parámetros económicos (Costo de energía, factor del acero y tasas de interés) y la selección del material (Diámetro nominal y grado de acero). Ajuste las variables operativas como el flujo de gas y el número de estaciones de compresión para observar la actualización instantánea de las métricas y gráficas de rendimiento.
+        Utilice la barra lateral para configurar los parámetros económicos (Costo de energía, factor del acero y tasas de interés) y la selección del material (Diámetro nominal y grado de acero). Ajuste las variables operativas como el flujo de gas y el número de estaciones de compresión para observar la actualización instantánea de las métricas y gráficas de rendimiento.<b>
     </p>
 </div>
 """, unsafe_allow_html=True)

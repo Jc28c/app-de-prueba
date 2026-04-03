@@ -1,7 +1,10 @@
-
+# =============================================================================
+# PROYECTO: OPTIMIZACIÓN Y SIMULACIÓN DIGITAL DE SISTEMAS DE TRANSPORTE DE GAS
+# =============================================================================
 # Universidad Central de Venezuela - Escuela de Ingeniería Química
-# Optimización de Procesos Semestre 3-2025
+# Optimización de Procesos - Semestre 3-2025
 # Prof. Ricardo Olejnik
+# =============================================================================
 
 import streamlit as st
 import pandas as pd
@@ -10,7 +13,9 @@ import plotly.graph_objects as go
 import plotly.express as px
 from io import StringIO
 
+# -----------------------------------------------------------------------------
 # CONFIGURACIÓN DE LA PÁGINA
+# -----------------------------------------------------------------------------
 st.set_page_config(
     page_title="Simulador Gasoducto Trans-Andino",
     page_icon="🛢️",
@@ -18,6 +23,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# -----------------------------------------------------------------------------
+# ESTILO PERSONALIZADO (fondo claro, sidebar azul claro, texto blanco, flecha blanca)
+# -----------------------------------------------------------------------------
 st.markdown("""
 <style>
     .stApp {
@@ -26,6 +34,7 @@ st.markdown("""
     html, body, [class*="css"] {
         color: #1e293b;
     }
+    /* Sidebar azul más claro */
     section[data-testid="stSidebar"] {
         background: #2c5a9e;
         border-right: 1px solid #1e293b;
@@ -52,6 +61,13 @@ st.markdown("""
     section[data-testid="stSidebar"] h3,
     section[data-testid="stSidebar"] .st-emotion-cache-1v3fvcr {
         color: #ffffff !important;
+    }
+    /* Subtítulos del sidebar más grandes */
+    section[data-testid="stSidebar"] .stSubheader {
+        font-size: 1.3rem !important;
+        font-weight: 600 !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
     }
     /* Métricas del sidebar: valor en blanco */
     section[data-testid="stSidebar"] div[data-testid="stMetricValue"] {
@@ -113,13 +129,13 @@ st.markdown("""
         border-radius: 12px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    /* Logo de texto en sidebar */
+    /* Logo de texto en sidebar - más grande */
     .logo-sidebar {
         text-align: center;
         margin-bottom: 20px;
     }
     .logo-sidebar span {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 800;
         background: linear-gradient(135deg, #ffffff, #cbd5e1);
         -webkit-background-clip: text;
@@ -127,6 +143,7 @@ st.markdown("""
         letter-spacing: 2px;
     }
     .logo-sidebar small {
+        font-size: 1rem;
         color: #cbd5e1 !important;
     }
 </style>
@@ -246,7 +263,7 @@ def calcular_tac(capex, opex, tasa_anual, vida_anos):
     return capex * crf + opex
 
 # -----------------------------------------------------------------------------
-# SIDEBAR: CONFIGURACIÓN DEL USUARIO
+# SIDEBAR: CONFIGURACIÓN DEL USUARIO (sin emojis)
 # -----------------------------------------------------------------------------
 with st.sidebar:
     st.markdown('<div class="logo-sidebar"><span>GD</span><br><small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
@@ -323,9 +340,9 @@ tac = calcular_tac(capex_total, opex_energia, tasa_interes, vida_util)
 # -----------------------------------------------------------------------------
 # ---- BANNER PUBLICITARIO (IMAGEN EN LA RAÍZ) ----
 st.image("banner.jpeg", use_container_width=True)
-st.markdown("<br>", unsafe_allow_html=True)  # pequeño espacio después del banner
+st.markdown("<br>", unsafe_allow_html=True)
 
-st.title("Simulador del Gasoducto Trans‑Andino")
+st.title("🛢️ Simulador del Gasoducto Trans‑Andino")
 st.markdown("""
 Aplicación interactiva para la optimización del transporte de gas natural utilizando el método de Weymouth.
 Ajusta los parámetros en la barra lateral y observa los efectos en tiempo real.
@@ -462,6 +479,6 @@ st.markdown("---")
 st.markdown("""
 <div style="text-align: center; padding: 15px; color: #4b5563; font-size: 0.85rem;">
     <strong>Universidad Central de Venezuela - Escuela de Ingeniería Química</strong><br>
-    Optimización de Procesos • 2026
+    Optimización de Procesos • Prof. Ricardo Olejnik • 2026
 </div>
 """, unsafe_allow_html=True)

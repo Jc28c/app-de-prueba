@@ -318,6 +318,10 @@ tac = calcular_tac(capex_total, opex_energia, tasa_interes, vida_util)
 # -----------------------------------------------------------------------------
 # PANEL PRINCIPAL
 # -----------------------------------------------------------------------------
+# ---- BANNER PUBLICITARIO (IMAGEN EN LA RAÍZ) ----
+st.image("banner.jpeg", use_container_width=True)
+st.markdown("<br>", unsafe_allow_html=True)  # pequeño espacio después del banner
+
 st.title("🛢️ Simulador del Gasoducto Trans‑Andino")
 st.markdown("""
 Aplicación interactiva para la optimización del transporte de gas natural utilizando el método de Weymouth.

@@ -1,10 +1,7 @@
-# =============================================================================
-# PROYECTO: OPTIMIZACIÓN Y SIMULACIÓN DIGITAL DE SISTEMAS DE TRANSPORTE DE GAS
-# =============================================================================
+
 # Universidad Central de Venezuela - Escuela de Ingeniería Química
-# Optimización de Procesos - Semestre 3-2025
+# Optimización de Procesos Semestre 3-2025
 # Prof. Ricardo Olejnik
-# =============================================================================
 
 import streamlit as st
 import pandas as pd
@@ -13,9 +10,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from io import StringIO
 
-# -----------------------------------------------------------------------------
 # CONFIGURACIÓN DE LA PÁGINA
-# -----------------------------------------------------------------------------
 st.set_page_config(
     page_title="Simulador Gasoducto Trans-Andino",
     page_icon="🛢️",
@@ -23,9 +18,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# -----------------------------------------------------------------------------
-# ESTILO PERSONALIZADO (fondo claro, sidebar azul claro, texto blanco, flecha blanca)
-# -----------------------------------------------------------------------------
 st.markdown("""
 <style>
     .stApp {
@@ -34,7 +26,6 @@ st.markdown("""
     html, body, [class*="css"] {
         color: #1e293b;
     }
-    /* Sidebar azul más claro */
     section[data-testid="stSidebar"] {
         background: #2c5a9e;
         border-right: 1px solid #1e293b;

@@ -18,7 +18,7 @@ from io import StringIO
 # -----------------------------------------------------------------------------
 st.set_page_config(
     page_title="Simulador Gasoducto Trans-Andino",
-    page_icon="🛢️",
+    #page_icon="🛢️",
     layout="wide",
     initial_sidebar_state="expanded"
 )

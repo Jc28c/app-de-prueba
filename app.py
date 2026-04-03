@@ -339,7 +339,7 @@ st.markdown("""
         El sistema integra el <strong>Método de Weymouth</strong> para modelar la caída de presión y determinar la viabilidad operativa del transporte de gas natural bajo distintas configuraciones de diseño.
     </p>
     <p style="margin-bottom: 1.2em;">
-        Al interactuar con el panel, el usuario accede a una visión integral del <strong>Perfil Hidráulico</strong> (Presión vs. Distancia) y a un análisis económico detallado.<br>El simulador calcula automáticamente la inversión de capital (CAPEX) en tuberías y compresores, junto con los costos operativos (OPEX) derivados del consumo energético, consolidándolos en el <strong>Costo Total Anualizado (TAC)</strong> para identificar la configuración más rentable.
+        Al interactuar con el panel, el usuario accede a una visión integral del <strong>Perfil Hidráulico</strong> (Presión vs. Distancia) y a un análisis económico detallado. El simulador calcula automáticamente la inversión de capital (CAPEX) en tuberías y compresores, junto con los costos operativos (OPEX) derivados del consumo energético, consolidándolos en el <strong>Costo Total Anualizado (TAC)</strong> para identificar la configuración más rentable.
     </p>
     <p style="margin-bottom: 0;">
         <strong>Instrucciones de Uso:</strong><br>

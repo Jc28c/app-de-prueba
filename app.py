@@ -1,10 +1,5 @@
-# =============================================================================
-# PROYECTO: OPTIMIZACIÓN Y SIMULACIÓN DIGITAL DE SISTEMAS DE TRANSPORTE DE GAS
-# =============================================================================
-# Universidad Central de Venezuela - Escuela de Ingeniería Química
-# Optimización de Procesos - Semestre 3-2025
-# Prof. Ricardo Olejnik
-# =============================================================================
+# PROYECTO FINAL
+# Optimización de Procesos - Semestre 2025-3
 
 import streamlit as st
 import pandas as pd
@@ -13,9 +8,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 from io import StringIO
 
-# -----------------------------------------------------------------------------
-# CONFIGURACIÓN DE LA PÁGINA
-# -----------------------------------------------------------------------------
+# CONFIGURACIÓN DE LA PAGINA
+
 st.set_page_config(
     page_title="Simulador Gasoducto Trans-Andino",
     page_icon="🛢️",
@@ -23,9 +17,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# -----------------------------------------------------------------------------
-# ESTILO PERSONALIZADO (fondo claro, sidebar azul claro, texto blanco, flecha blanca)
-# -----------------------------------------------------------------------------
 st.markdown("""
 <style>
     .stApp {
@@ -140,9 +131,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# -----------------------------------------------------------------------------
-# DATOS TÉCNICOS FIJOS (Tablas del enunciado)
-# -----------------------------------------------------------------------------
+# DATOS DEL ENUNCIADO
+
 TUBERIAS = pd.DataFrame({
     'DN_pulg': [12, 16, 20, 24],
     'DE_mm': [323.8, 406.4, 508.0, 609.6],
@@ -158,7 +148,7 @@ GRADOS = pd.DataFrame({
     'F': [0.72, 0.72]
 })
 
-# Constantes físicas y económicas base
+# CONSTANTES
 L_km = 400.0
 L_millas = L_km * 0.621371
 Q_base = 500.0
@@ -175,9 +165,8 @@ HP_to_kW = 0.7457
 horas_anuales = 8760
 vida_util = 20
 
-# -----------------------------------------------------------------------------
-# FUNCIONES AUXILIARES
-# -----------------------------------------------------------------------------
+# FUNCIONES
+
 def calcular_maop(smys_psi, espesor_pulg, de_pulg, F):
     return 2 * smys_psi * espesor_pulg * F / de_pulg
 

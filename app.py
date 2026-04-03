@@ -34,17 +34,14 @@ st.markdown("""
     html, body, [class*="css"] {
         color: #1e293b;
     }
-    /* Sidebar azul más claro */
     section[data-testid="stSidebar"] {
         background: #2c5a9e;
         border-right: 1px solid #1e293b;
     }
-    /* Flecha para contraer/expandir sidebar en blanco */
     button[kind="header"] svg {
         fill: #ffffff !important;
         color: #ffffff !important;
     }
-    /* Todos los textos del sidebar en blanco */
     section[data-testid="stSidebar"] .stMarkdown,
     section[data-testid="stSidebar"] .stMetric label,
     section[data-testid="stSidebar"] .stMetric .stMetricDelta,
@@ -62,27 +59,23 @@ st.markdown("""
     section[data-testid="stSidebar"] .st-emotion-cache-1v3fvcr {
         color: #ffffff !important;
     }
-    /* Subtítulos del sidebar más grandes */
     section[data-testid="stSidebar"] .stSubheader {
         font-size: 1.3rem !important;
         font-weight: 600 !important;
         margin-top: 0.5rem !important;
         margin-bottom: 0.5rem !important;
     }
-    /* Métricas del sidebar: valor en blanco */
     section[data-testid="stSidebar"] div[data-testid="stMetricValue"] {
         color: #ffffff !important;
         background: none !important;
         -webkit-text-fill-color: initial !important;
     }
-    /* Inputs del sidebar: fondo azul más claro, texto blanco */
     section[data-testid="stSidebar"] .stNumberInput input,
     section[data-testid="stSidebar"] .stSelectbox select,
     section[data-testid="stSidebar"] .stSlider .stSliderTickBar {
         background-color: #3b6cb7;
         color: #ffffff;
     }
-    /* Títulos principales sin gradiente morado */
     h1, h2, h3 {
         font-family: 'Space Grotesk', sans-serif;
         letter-spacing: -0.02em;
@@ -93,7 +86,6 @@ st.markdown("""
         background: none;
         -webkit-text-fill-color: initial;
     }
-    /* Métricas principales sin gradiente */
     div[data-testid="stMetricValue"] {
         font-size: 1.8rem !important;
         font-weight: 700 !important;
@@ -129,7 +121,6 @@ st.markdown("""
         border-radius: 12px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    /* Logo de texto en sidebar - más grande */
     .logo-sidebar {
         text-align: center;
         margin-bottom: 20px;
@@ -168,24 +159,24 @@ GRADOS = pd.DataFrame({
 })
 
 # Constantes físicas y económicas base
-L_km = 400.0                # km
-L_millas = L_km * 0.621371  # millas
-Q_base = 500.0              # MMscfd (diseño, pero puede variar)
-P_in = 800.0                # psia
-P_out_min = 500.0           # psia
-T_suction_K = 293.15        # K
-T_suction_R = T_suction_K * 9/5  # Rankine = 527.67
+L_km = 400.0
+L_millas = L_km * 0.621371
+Q_base = 500.0
+P_in = 800.0
+P_out_min = 500.0
+T_suction_K = 293.15
+T_suction_R = T_suction_K * 9/5
 gamma = 0.65
 Z = 0.90
-E_tuberia = 0.95            # eficiencia Weymouth
-k = 1.25                    # relación cp/cv para gas natural
-eta_comp = 0.85             # eficiencia compresor
+E_tuberia = 0.95
+k = 1.25
+eta_comp = 0.85
 HP_to_kW = 0.7457
-horas_anuales = 8760        # h/año
-vida_util = 20              # años
+horas_anuales = 8760
+vida_util = 20
 
 # -----------------------------------------------------------------------------
-# FUNCIONES AUXILIARES (con ecuaciones originales)
+# FUNCIONES AUXILIARES
 # -----------------------------------------------------------------------------
 def calcular_maop(smys_psi, espesor_pulg, de_pulg, F):
     return 2 * smys_psi * espesor_pulg * F / de_pulg
@@ -317,16 +308,13 @@ distancias_km, presiones_psia, r_comp, _ = calcular_perfil_presion(
     N_estaciones=N_estaciones, P_inicial=P_in, P_out_min=P_out_min
 )
 
-# Potencia total
 potencia_total_HP = 0
 for _ in range(N_estaciones):
     potencia_total_HP += calcular_potencia_estacion(Q_oper, r_comp, T_suction_R, Z, eta_comp)
 
-# Temperatura de descarga
 T_desc_R = T_suction_R * (r_comp ** ((k-1)/k))
 T_desc_C = (T_desc_R - 459.67) * 5/9
 
-# Costos
 capex_tuberia = L_km * 1000 * costo_base_tubo
 costo_compresor_por_HP = 2000.0
 capex_compresores = potencia_total_HP * costo_compresor_por_HP
@@ -338,21 +326,21 @@ tac = calcular_tac(capex_total, opex_energia, tasa_interes, vida_util)
 # -----------------------------------------------------------------------------
 # PANEL PRINCIPAL
 # -----------------------------------------------------------------------------
-# ---- BANNER PUBLICITARIO (IMAGEN EN LA RAÍZ) ----
 st.image("banner.jpeg", use_container_width=True)
 st.markdown("<br>", unsafe_allow_html=True)
 
-st.title("Simulador del Gasoducto Trans‑Andino")
+st.title("🛢️ Simulador del Gasoducto Trans‑Andino")
 st.markdown("""
-**Gemelo Digital** permite evaluar el comportamiento técnico del Gasoducto Trans-Andino en tiempo real.  
-El sistema integra el **Método de Weymouth** para modelar la caída de presión y determinar la viabilidad operativa del transporte de gas natural bajo distintas configuraciones de diseño.
+<div style="text-align: justify;">
+<strong>Gemelo Digital</strong> permite evaluar el comportamiento técnico del Gasoducto Trans-Andino en tiempo real.  
+El sistema integra el <strong>Método de Weymouth</strong> para modelar la caída de presión y determinar la viabilidad operativa del transporte de gas natural bajo distintas configuraciones de diseño.
 
-Al interactuar con el panel, el usuario accede a una visión integral del **Perfil Hidráulico** (Presión vs. Distancia) y a un análisis económico detallado.  
-El simulador calcula automáticamente la inversión de capital (CAPEX) en tuberías y compresores, junto con los costos operativos (OPEX) derivados del consumo energético, consolidándolos en el **Costo Total Anualizado (TAC)** para identificar la configuración más rentable.
+Al interactuar con el panel, el usuario accede a una visión integral del <strong>Perfil Hidráulico</strong> (Presión vs. Distancia) y a un análisis económico detallado. El simulador calcula automáticamente la inversión de capital (CAPEX) en tuberías y compresores, junto con los costos operativos (OPEX) derivados del consumo energético, consolidándolos en el <strong>Costo Total Anualizado (TAC)</strong> para identificar la configuración más rentable.
 
-**Instrucciones de Uso:**  
+<strong>Instrucciones de Uso:</strong>  
 Utilice la barra lateral para configurar los parámetros económicos (Costo de energía, factor del acero y tasas de interés) y la selección del material (Diámetro nominal y grado de acero). Ajuste las variables operativas como el flujo de gas y el número de estaciones de compresión para observar la actualización instantánea de las métricas y gráficas de rendimiento.
-""")
+</div>
+""", unsafe_allow_html=True)
 
 # ---- Métricas principales ----
 col1, col2, col3, col4 = st.columns(4)
@@ -367,7 +355,7 @@ with col3:
 with col4:
     st.metric("Relación de Compresión", f"{r_comp:.3f}")
 
-# ---- VALIDACIONES (antes de los gráficos) ----
+# ---- VALIDACIONES ----
 st.markdown("## ⚠️ Validación del Diseño")
 col_alert1, col_alert2, col_alert3 = st.columns(3)
 presion_max = np.max(presiones_psia)
@@ -436,7 +424,7 @@ with st.expander("💰 Desglose de Costos (haga clic para expandir)", expanded=F
         fig_opex.update_layout(template='plotly_white', plot_bgcolor='rgba(0,0,0,0)', font=dict(color='#1e293b'))
         st.plotly_chart(fig_opex, use_container_width=True)
 
-# ---- Tabla de resultados técnicos dentro de un expander ----
+# ---- Tabla de resultados técnicos (expander) ----
 with st.expander("📊 Resultados Técnicos Detallados (haga clic para expandir)", expanded=False):
     datos_tecnicos = {
         'Parámetro': [

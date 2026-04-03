@@ -327,24 +327,18 @@ tac = calcular_tac(capex_total, opex_energia, tasa_interes, vida_util)
 # PANEL PRINCIPAL
 # -----------------------------------------------------------------------------
 st.image("banner.jpeg", use_container_width=True)
+st.markdown("<br>", unsafe_allow_html=True)
 
 st.title("🛢️ Simulador del Gasoducto Trans‑Andino")
-
-# Texto descriptivo con separación uniforme entre párrafos y espacios adecuados
 st.markdown("""
 <div style="text-align: justify;">
-    <p style="margin-top: 1rem; margin-bottom: 1rem;">
-        <strong>Gemelo Digital</strong> permite evaluar el comportamiento técnico del Gasoducto Trans-Andino en tiempo real.<br>
-        El sistema integra el <strong>Método de Weymouth</strong> para modelar la caída de presión y determinar la viabilidad operativa del transporte de gas natural bajo distintas configuraciones de diseño.
-    </p>
-    <p style="margin-bottom: 1rem;">
-        Al interactuar con el panel, el usuario accede a una visión integral del <strong>Perfil Hidráulico</strong> (Presión vs. Distancia) y a un análisis económico detallado.<br>
-        El simulador calcula automáticamente la inversión de capital (CAPEX) en tuberías y compresores, junto con los costos operativos (OPEX) derivados del consumo energético, consolidándolos en el <strong>Costo Total Anualizado (TAC)</strong> para identificar la configuración más rentable.
-    </p>
-    <p style="margin-bottom: 0;">
-        <strong>Instrucciones de Uso:</strong><br>
-        Utilice la barra lateral para configurar los parámetros económicos (Costo de energía, factor del acero y tasas de interés) y la selección del material (Diámetro nominal y grado de acero). Ajuste las variables operativas como el flujo de gas y el número de estaciones de compresión para observar la actualización instantánea de las métricas y gráficas de rendimiento.
-    </p>
+<strong>Gemelo Digital</strong> permite evaluar el comportamiento técnico del Gasoducto Trans-Andino en tiempo real.  
+El sistema integra el <strong>Método de Weymouth</strong> para modelar la caída de presión y determinar la viabilidad operativa del transporte de gas natural bajo distintas configuraciones de diseño.
+
+Al interactuar con el panel, el usuario accede a una visión integral del <strong>Perfil Hidráulico</strong> (Presión vs. Distancia) y a un análisis económico detallado. El simulador calcula automáticamente la inversión de capital (CAPEX) en tuberías y compresores, junto con los costos operativos (OPEX) derivados del consumo energético, consolidándolos en el <strong>Costo Total Anualizado (TAC)</strong> para identificar la configuración más rentable.
+
+<strong>Instrucciones de Uso:</strong>  
+Utilice la barra lateral para configurar los parámetros económicos (Costo de energía, factor del acero y tasas de interés) y la selección del material (Diámetro nominal y grado de acero). Ajuste las variables operativas como el flujo de gas y el número de estaciones de compresión para observar la actualización instantánea de las métricas y gráficas de rendimiento.
 </div>
 """, unsafe_allow_html=True)
 

@@ -64,7 +64,7 @@ st.markdown("""
     }
     /* Subtítulos del sidebar más grandes */
     section[data-testid="stSidebar"] .stSubheader {
-        font-size: 1.3rem !important;
+        font-size: 3rem !important;
         font-weight: 600 !important;
         margin-top: 0.5rem !important;
         margin-bottom: 0.5rem !important;

@@ -329,12 +329,12 @@ tac = calcular_tac(capex_total, opex_energia, tasa_interes, vida_util)
 st.image("banner.jpeg", use_container_width=True)
 st.markdown("<br>", unsafe_allow_html=True)
 
-st.title("🛢️ Simulador del Gasoducto Trans‑Andino")
+st.title("Simulador del Gasoducto Trans‑Andino")
 st.markdown("""
 <div style="text-align: justify;">
 <strong>Gemelo Digital</strong> permite evaluar el comportamiento técnico del Gasoducto Trans-Andino en tiempo real.  
 El sistema integra el <strong>Método de Weymouth</strong> para modelar la caída de presión y determinar la viabilidad operativa del transporte de gas natural bajo distintas configuraciones de diseño.
-
+<p>
 Al interactuar con el panel, el usuario accede a una visión integral del <strong>Perfil Hidráulico</strong> (Presión vs. Distancia) y a un análisis económico detallado. El simulador calcula automáticamente la inversión de capital (CAPEX) en tuberías y compresores, junto con los costos operativos (OPEX) derivados del consumo energético, consolidándolos en el <strong>Costo Total Anualizado (TAC)</strong> para identificar la configuración más rentable.
 
 <strong>Instrucciones de Uso:</strong>  

@@ -18,12 +18,13 @@ from io import StringIO
 # -----------------------------------------------------------------------------
 st.set_page_config(
     page_title="Simulador Gasoducto Trans-Andino",
+    page_icon="🛢️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # -----------------------------------------------------------------------------
-# ESTILO PERSONALIZADO (fondo claro, sidebar azul Spiderman, texto blanco)
+# ESTILO PERSONALIZADO (fondo claro, sidebar azul, texto blanco, flecha blanca)
 # -----------------------------------------------------------------------------
 st.markdown("""
 <style>
@@ -33,10 +34,15 @@ st.markdown("""
     html, body, [class*="css"] {
         color: #1e293b;
     }
-    /* Sidebar azul Spiderman (tono #1e3a8a) */
+    /* Sidebar azul Spiderman */
     section[data-testid="stSidebar"] {
         background: #1e3a8a;
         border-right: 1px solid #1e293b;
+    }
+    /* Flecha para contraer/expandir sidebar en blanco */
+    button[kind="header"] svg {
+        fill: #ffffff !important;
+        color: #ffffff !important;
     }
     /* Todos los textos del sidebar en blanco */
     section[data-testid="stSidebar"] .stMarkdown,
@@ -56,7 +62,7 @@ st.markdown("""
     section[data-testid="stSidebar"] .st-emotion-cache-1v3fvcr {
         color: #ffffff !important;
     }
-    /* Métricas del sidebar: valor en blanco y sin gradiente */
+    /* Métricas del sidebar: valor en blanco */
     section[data-testid="stSidebar"] div[data-testid="stMetricValue"] {
         color: #ffffff !important;
         background: none !important;
@@ -68,15 +74,6 @@ st.markdown("""
     section[data-testid="stSidebar"] .stSlider .stSliderTickBar {
         background-color: #2563eb;
         color: #ffffff;
-    }
-    /* Logo en sidebar (texto "GD" y "El Gemelo Digital") */
-    .logo-sidebar span {
-        background: linear-gradient(135deg, #ffffff, #cbd5e1);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    .logo-sidebar small {
-        color: #cbd5e1 !important;
     }
     /* Títulos principales sin gradiente morado */
     h1, h2, h3 {
@@ -124,6 +121,12 @@ st.markdown("""
         background-color: white;
         border-radius: 12px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    /* Centrar imagen en sidebar */
+    .centered-image {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -245,7 +248,10 @@ def calcular_tac(capex, opex, tasa_anual, vida_anos):
 # SIDEBAR: CONFIGURACIÓN DEL USUARIO
 # -----------------------------------------------------------------------------
 with st.sidebar:
-    st.markdown('<div class="logo-sidebar"><span>GD</span><br><small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
+    # Logo centrado (cambia "logo.png" por el nombre de tu archivo)
+    st.markdown('<div class="centered-image">', unsafe_allow_html=True)
+    st.image("logo.jpeg", width=150)  # Ajusta el ancho según tu logo
+    st.markdown('</div>', unsafe_allow_html=True)
     st.markdown("---")
     
     st.subheader("📊 Parámetros Económicos")
@@ -321,7 +327,7 @@ tac = calcular_tac(capex_total, opex_energia, tasa_interes, vida_util)
 st.image("banner.jpeg", use_container_width=True)
 st.markdown("<br>", unsafe_allow_html=True)  # pequeño espacio después del banner
 
-st.title("🛢️ Simulador del Gasoducto Trans‑Andino")
+st.title("Simulador del Gasoducto Trans‑Andino")
 st.markdown("""
 Aplicación interactiva para la optimización del transporte de gas natural utilizando el método de Weymouth.
 Ajusta los parámetros en la barra lateral y observa los efectos en tiempo real.

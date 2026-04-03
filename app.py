@@ -335,7 +335,6 @@ st.markdown("""
 <strong>Gemelo Digital</strong> permite evaluar el comportamiento técnico del Gasoducto Trans-Andino en tiempo real.  
 El sistema integra el <strong>Método de Weymouth</strong> para modelar la caída de presión y determinar la viabilidad operativa del transporte de gas natural bajo distintas configuraciones de diseño.
 
-<div style="text-align: justify;">
 Al interactuar con el panel, el usuario accede a una visión integral del <strong>Perfil Hidráulico</strong> (Presión vs. Distancia) y a un análisis económico detallado. El simulador calcula automáticamente la inversión de capital (CAPEX) en tuberías y compresores, junto con los costos operativos (OPEX) derivados del consumo energético, consolidándolos en el <strong>Costo Total Anualizado (TAC)</strong> para identificar la configuración más rentable.
 
 <strong>Instrucciones de Uso:</strong>  

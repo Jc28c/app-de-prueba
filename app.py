@@ -24,7 +24,7 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# ESTILO PERSONALIZADO (fondo claro, texto oscuro, acentos agua marina)
+# ESTILO PERSONALIZADO (fondo claro, sidebar azul oscuro con texto blanco)
 # -----------------------------------------------------------------------------
 st.markdown("""
 <style>
@@ -34,17 +34,52 @@ st.markdown("""
     html, body, [class*="css"] {
         color: #1e293b;
     }
+    /* Sidebar azul oscuro */
     section[data-testid="stSidebar"] {
-        background: rgba(178, 240, 229, 0.85);
-        backdrop-filter: blur(8px);
-        border-right: 1px solid #cbd5e1;
+        background: #0f172a;
+        border-right: 1px solid #1e293b;
     }
-    section[data-testid="stSidebar"] .stMarkdown, 
+    /* Todos los textos del sidebar en blanco */
+    section[data-testid="stSidebar"] .stMarkdown,
     section[data-testid="stSidebar"] .stMetric label,
     section[data-testid="stSidebar"] .stMetric .stMetricDelta,
-    section[data-testid="stSidebar"] .css-1v3fvcr {
-        color: #1e293b !important;
+    section[data-testid="stSidebar"] .css-1v3fvcr,
+    section[data-testid="stSidebar"] .stSelectbox label,
+    section[data-testid="stSidebar"] .stNumberInput label,
+    section[data-testid="stSidebar"] .stSlider label,
+    section[data-testid="stSidebar"] .stCaption,
+    section[data-testid="stSidebar"] .stMarkdown p,
+    section[data-testid="stSidebar"] .stMarkdown li,
+    section[data-testid="stSidebar"] .stMarkdown strong,
+    section[data-testid="stSidebar"] h1, 
+    section[data-testid="stSidebar"] h2, 
+    section[data-testid="stSidebar"] h3,
+    section[data-testid="stSidebar"] .st-emotion-cache-1v3fvcr {
+        color: #ffffff !important;
     }
+    /* Métricas del sidebar: valor en blanco y sin gradiente */
+    section[data-testid="stSidebar"] div[data-testid="stMetricValue"] {
+        color: #ffffff !important;
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+    }
+    /* Inputs del sidebar: fondo oscuro, texto blanco */
+    section[data-testid="stSidebar"] .stNumberInput input,
+    section[data-testid="stSidebar"] .stSelectbox select,
+    section[data-testid="stSidebar"] .stSlider .stSliderTickBar {
+        background-color: #1e293b;
+        color: #ffffff;
+    }
+    /* Logo en sidebar (texto "GD" y "El Gemelo Digital") */
+    .logo-sidebar span {
+        background: linear-gradient(135deg, #ffffff, #94a3b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .logo-sidebar small {
+        color: #cbd5e1 !important;
+    }
+    /* Títulos principales sin gradiente morado */
     h1, h2, h3 {
         font-family: 'Space Grotesk', sans-serif;
         letter-spacing: -0.02em;
@@ -55,6 +90,7 @@ st.markdown("""
         background: none;
         -webkit-text-fill-color: initial;
     }
+    /* Métricas principales sin gradiente */
     div[data-testid="stMetricValue"] {
         font-size: 1.8rem !important;
         font-weight: 700 !important;
@@ -89,18 +125,6 @@ st.markdown("""
         background-color: white;
         border-radius: 12px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .logo-sidebar {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .logo-sidebar span {
-        font-size: 2.5rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #0f172a, #2c7a6e);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: 2px;
     }
 </style>
 """, unsafe_allow_html=True)

@@ -384,7 +384,7 @@ with st.expander("📈 Perfil Hidráulico (haga clic para expandir)", expanded=F
         x=distancias_km, y=presiones_psia,
         mode='lines+markers',
         name='Presión (psia)',
-        line=dict(color='#2c7a6e', width=3),
+        line=dict(color='#34d399', width=3),
         marker=dict(size=6, color='#1e5a50'),
         hovertemplate='Distancia: %{x:.1f} km<br>Presión: %{y:.2f} psia<extra></extra>'
     ))

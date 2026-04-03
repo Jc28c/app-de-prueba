@@ -413,7 +413,7 @@ with st.expander("💰 Desglose de Costos (haga clic para expandir)", expanded=F
     col_bar1, col_bar2 = st.columns(2)
     with col_bar1:
         fig_capex = px.bar(df_capex, x='Concepto', y='CAPEX (USD)', color='Concepto',
-                           color_discrete_sequence=['#2c7a6e', '#1e5a50'],
+                           color_discrete_sequence=['#4facfe', '#FFF176'],
                            title='Inversión de Capital (CAPEX)')
         fig_capex.update_layout(template='plotly_white', plot_bgcolor='rgba(0,0,0,0)', font=dict(color='#1e293b'))
         st.plotly_chart(fig_capex, use_container_width=True)

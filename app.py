@@ -122,11 +122,21 @@ st.markdown("""
         border-radius: 12px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    /* Centrar imagen en sidebar */
-    .centered-image {
-        display: flex;
-        justify-content: center;
+    /* Logo de texto en sidebar */
+    .logo-sidebar {
+        text-align: center;
         margin-bottom: 20px;
+    }
+    .logo-sidebar span {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #ffffff, #cbd5e1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 2px;
+    }
+    .logo-sidebar small {
+        color: #cbd5e1 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -248,10 +258,7 @@ def calcular_tac(capex, opex, tasa_anual, vida_anos):
 # SIDEBAR: CONFIGURACIÓN DEL USUARIO
 # -----------------------------------------------------------------------------
 with st.sidebar:
-    # Logo centrado (cambia "logo.jpeg" por el nombre de tu archivo)
-    st.markdown('<div class="centered-image">', unsafe_allow_html=True)
-    st.image("logo.jpeg", width=150)  # Ajusta el ancho según tu logo
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div class="logo-sidebar"><span>GD</span><br><small>El Gemelo Digital</small></div>', unsafe_allow_html=True)
     st.markdown("---")
     
     st.subheader("📊 Parámetros Económicos")
@@ -327,7 +334,7 @@ tac = calcular_tac(capex_total, opex_energia, tasa_interes, vida_util)
 st.image("banner.jpeg", use_container_width=True)
 st.markdown("<br>", unsafe_allow_html=True)  # pequeño espacio después del banner
 
-st.title("🛢️ Simulador del Gasoducto Trans‑Andino")
+st.title("Simulador del Gasoducto Trans‑Andino")
 st.markdown("""
 Aplicación interactiva para la optimización del transporte de gas natural utilizando el método de Weymouth.
 Ajusta los parámetros en la barra lateral y observa los efectos en tiempo real.

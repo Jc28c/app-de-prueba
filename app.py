@@ -342,7 +342,7 @@ tac = calcular_tac(capex_total, opex_energia, tasa_interes, vida_util)
 st.image("banner.jpeg", use_container_width=True)
 st.markdown("<br>", unsafe_allow_html=True)
 
-st.title("🛢️ Simulador del Gasoducto Trans‑Andino")
+st.title("Simulador del Gasoducto Trans‑Andino")
 st.markdown("""
 **Gemelo Digital** permite evaluar el comportamiento técnico del Gasoducto Trans-Andino en tiempo real.  
 El sistema integra el **Método de Weymouth** para modelar la caída de presión y determinar la viabilidad operativa del transporte de gas natural bajo distintas configuraciones de diseño.
@@ -485,6 +485,6 @@ st.markdown("---")
 st.markdown("""
 <div style="text-align: center; padding: 15px; color: #4b5563; font-size: 0.85rem;">
     <strong>Universidad Central de Venezuela - Escuela de Ingeniería Química</strong><br>
-    Optimización de Procesos • Prof. Ricardo Olejnik • 2026
+    Optimización de Procesos • 2026
 </div>
 """, unsafe_allow_html=True)

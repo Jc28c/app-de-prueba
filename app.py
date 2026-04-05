@@ -6,7 +6,6 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
-from io import StringIO
 
 # CONFIGURACIÓN DE LA PAGINA
 
@@ -250,7 +249,7 @@ with st.sidebar:
     st.markdown("---")
     
     st.subheader("Parámetros Económicos")
-    costo_energia = st.number_input("Costo de energía (USD/kWh)", min_value=0.01, max_value=1.0, value=0.08, step=0.01, format="%.3f")
+    costo_energia = st.number_input("Costo de energía (USD/kWh)", min_value=0.01, max_value=1.0, value=0.136, step=0.01, format="%.3f")
     factor_costo_acero = st.slider("Factor costo acero", min_value=0.5, max_value=2.0, value=1.0, step=0.05)
     tasa_interes = st.number_input("Tasa de interés anual (%)", min_value=0.0, max_value=30.0, value=8.0, step=0.5, format="%.1f") / 100.0
 

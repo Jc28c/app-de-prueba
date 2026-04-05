@@ -251,7 +251,7 @@ with st.sidebar:
     st.subheader("Parámetros Económicos")
     costo_energia = st.number_input("Costo de energía (USD/kWh)", min_value=0.01, max_value=1.0, value=0.136, step=0.01, format="%.3f")
     factor_costo_acero = st.slider("Factor costo acero", min_value=0.5, max_value=2.0, value=1.0, step=0.05)
-    tasa_interes = st.number_input("Tasa de interés anual (%)", min_value=0.0, max_value=30.0, value=8.0, step=0.5, format="%.1f") / 100.0
+    tasa_interes = st.number_input("Tasa de interés anual (%)", min_value=0.0, max_value=30.0, value=12.0, step=0.5, format="%.1f") / 100.0
 
     st.markdown("---")
     st.subheader("Selección de Material")
@@ -304,7 +304,7 @@ T_desc_R = T_suction_R * (r_comp ** ((k-1)/k))
 T_desc_C = (T_desc_R - 459.67) * 5/9
 
 capex_tuberia = L_km * 1000 * costo_base_tubo
-costo_compresor_por_HP = 2000.0
+costo_compresor_por_HP = 2600.0
 capex_compresores = potencia_total_HP * costo_compresor_por_HP
 capex_total = capex_tuberia + capex_compresores
 

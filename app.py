@@ -435,28 +435,28 @@ with st.expander("📊 Resultados Técnicos Detallados (haga clic para expandir)
     st.dataframe(df_tec, use_container_width=True, hide_index=True)
 
 # ---- Exportación CSV ----
-with st.container():
-    st.markdown("---")
-    st.subheader("📥 Exportar resultados")
-    export_data = {
-        'Distancia_km': distancias_km,
-        'Presion_psia': presiones_psia
-    }
-    df_export = pd.DataFrame(export_data)
-    df_export_params = pd.DataFrame({
-        'Parametro': ['Q_MMscfd', 'DN_pulg', 'Grado', 'N_estaciones', 'r_comp', 'Potencia_total_HP', 'TAC_USD'],
-        'Valor': [Q_oper, dn_opcion, grado_opcion, N_estaciones, r_comp, potencia_total_HP, tac]
-    })
-    csv_buffer = StringIO()
-    df_export.to_csv(csv_buffer, index=False)
-    csv_buffer.write('\n')
-    df_export_params.to_csv(csv_buffer, index=False)
-    st.download_button(
-        label="📄 Descargar resultados completos (CSV)",
-        data=csv_buffer.getvalue(),
-        file_name="simulacion_gasoducto.csv",
-        mime="text/csv"
-    )
+#with st.container():
+ #   st.markdown("---")
+  #  st.subheader("📥 Exportar resultados")
+   # export_data = {
+    #    'Distancia_km': distancias_km,
+     #   'Presion_psia': presiones_psia
+    #}
+    #df_export = pd.DataFrame(export_data)
+    #df_export_params = pd.DataFrame({
+    #    'Parametro': ['Q_MMscfd', 'DN_pulg', 'Grado', 'N_estaciones', 'r_comp', 'Potencia_total_HP', 'TAC_USD'],
+     #   'Valor': [Q_oper, dn_opcion, grado_opcion, N_estaciones, r_comp, potencia_total_HP, tac]
+    #})
+    #csv_buffer = StringIO()
+    #df_export.to_csv(csv_buffer, index=False)
+    #csv_buffer.write('\n')
+    #df_export_params.to_csv(csv_buffer, index=False)
+    #st.download_button(
+     #   label="📄 Descargar resultados completos (CSV)",
+      #  data=csv_buffer.getvalue(),
+       # file_name="simulacion_gasoducto.csv",
+        #mime="text/csv"
+    #)
 
 st.markdown("---")
 st.markdown("""
